@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1c1c1c;
+    font-family: "Roboto", sans-serif;
+}
