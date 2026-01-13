@@ -1,27 +1,28 @@
-// ADICIONAR OS NÚMEROS AO DISPLAY
-// LIMPAR TODOS OS NÚMEROS DO DISPLAY
-// LIMPAR NÚMERO ATUAL DO DISPLAY
-// SOMAR OS NÚMEROS DO DISPLAY
+const display = document.getElementById('display')
+const buttons = document.querySelectorAll('.btn')
 
-function insertToDisplay(data) {
-    document.querySelector('#display').value += data // adiciona o número ao display
-}
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.textContent
 
-function clean() {
-    document.querySelector('#display').value = '' // limpa o display
-}
+        if (value === 'DEL') {
+            display.value = display.value.slice(0, -1)
+            return
+        }
 
-function back() {
-    const display = document.querySelector('#display')
-    display.value = display.value.slice(0, -1) // slice remove o último caractere
-}
+        if (value === 'C') {
+            display.value = ''
+            return
+        }
 
-function result() {
-    const display = document.querySelector('#display')
-    
-    try { // tenta executar o cálculo
-        display.value = eval(display.value).toFixed(2) // eval() para executar o cálculo / toFixed(2) para limitar casas decimais
-    } catch { // se der erro exibe a mensagem
-        display.value = 'Error'       
-    }
-}
+        if (value === '=') {
+            try {
+                display.value = eval(display.value)
+            } catch {
+                display.value = 'Error'
+            }
+            return
+        }
+        display.value += value
+    })
+})
